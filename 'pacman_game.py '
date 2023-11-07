@@ -1,0 +1,41 @@
+import random
+import time
+import os
+
+def display_sequence(sequence):
+    os.system('clear')  # Clears the terminal (for Termux)
+    for number in sequence:
+        print(number, end=' ')
+        time.sleep(1)
+        os.system('clear')
+        time.sleep(0.5)
+
+def get_user_input():
+    user_input = input("Enter the numbers you saw, separated by spaces: ")
+    return user_input.split()
+
+def is_correct(user_input, sequence):
+    return user_input == sequence
+
+def brain_game():
+    print("Welcome to the Brain Game!")
+    print("You will be shown a sequence of numbers and you need to recall and enter them.")
+    input("Press Enter to start...")
+
+    while True:
+        sequence = [random.randint(1, 9) for _ in range(5)]
+        display_sequence(sequence)
+        user_input = get_user_input()
+
+        if is_correct(user_input, [str(num) for num in sequence]):
+            print("Correct! You have a great memory.")
+        else:
+            print("Incorrect! Your memory needs more exercise.")
+
+        play_again = input("Play again? (yes/no): ").lower()
+        if play_again != "yes":
+            print("Thanks for playing!")
+            break
+
+if __name__ == "__main__":
+    brain_game()
