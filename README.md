@@ -24,4 +24,4 @@ cd Brain-Game-76
 ```
 
 ```
-python 'brain.py '
+python "'pacman_game.py '"
